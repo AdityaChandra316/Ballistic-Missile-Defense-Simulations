@@ -389,6 +389,7 @@ while True:
       break
 
     prev_dist_between_abm_icbm = dist_between_abm_icbm
+    
   icbm.update(icbm_thrust_vector)
   abm.update(abm_thrust_vector)
 
