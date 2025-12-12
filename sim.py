@@ -187,13 +187,7 @@ def icbm_desired_thrust_vector():
     1
   )
   v_tbg = desired_icbm_velocity_data['desired_velocity'] - icbm.velocity
-  grav_acc = grav_field(icbm.position)
-  icbm_acc = icbm_acc_profile(icbm.time_since_launch)
-  a = np.linalg.norm(v_tbg) ** 2.0
-  b = -2.0 * v_tbg.dot(grav_acc)
-  c = np.linalg.norm(grav_acc) ** 2.0 - icbm_acc ** 2.0
-  k = (-b + math.sqrt(b ** 2.0 - 4.0 * a * c)) / (2.0 * a)
-  thrust_vector = (k * v_tbg - grav_acc) / icbm_acc
+  thrust_vector = normalise(v_tbg)
   return thrust_vector
 
 def check_for_abm_launch():
