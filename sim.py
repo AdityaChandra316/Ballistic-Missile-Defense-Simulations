@@ -322,7 +322,7 @@ while True:
   earth_orientation_matrix = make_orientation_matrix(simulation_time)
   inv_earth_orientation_matrix = make_orientation_matrix(-simulation_time)
 
-  # check_for_abm_launch()
+  check_for_abm_launch()
   icbm_thrust_vector = np.array([0.0, 0.0, 0.0])
   radial_out = normalise(icbm.position)
   icbm_altitude = np.linalg.norm(icbm.position) - R
@@ -343,14 +343,6 @@ while True:
       icbm.engines_on = False
     
     previous_impact_error = current_impact_error
-  else:
-    if icbm_altitude < 0.0:
-      break
-    print(
-      simulation_time, 
-      icbm_altitude,
-      np.linalg.norm(icbm.position - earth_orientation_matrix.dot(target_pos))
-    )
 
   abm_thrust_vector = np.array([0.0, 0.0, 0.0])
     
