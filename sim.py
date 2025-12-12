@@ -128,7 +128,7 @@ abm = Rocket(abm_coords, abm_acc_profile)
 
 def icbm_obj_fun(vel):
   vel_scaled = np.array(vel) * 1e3
-  return calculate_impact_error(icbm.position, vel_scaled) / 1e6
+  return 1e-5 * calculate_impact_error(icbm.position, vel_scaled)
 
 def desired_icbm_velocity(init_vel, init_radius, num_iter):
   num_iter_minus_one = num_iter - 1
@@ -205,7 +205,7 @@ def abm_obj_fun(vel):
   d_position = abm.position - icbm.position
   dist_rate = (d_position.dot(vel_scaled - icbm.velocity) / np.linalg.norm(d_position))
   closest_distance = calculate_closest_distance(abm.position, vel_scaled, icbm.position, icbm.velocity)
-  return 1e-6 * closest_distance + max(1e-3 * dist_rate, 0.0)
+  return 1e-5 * closest_distance + max(1e-3 * dist_rate, 0.0)
 
 def desired_abm_velocity(init_vel, init_radius, num_iter):
   num_iter_minus_one = num_iter - 1
