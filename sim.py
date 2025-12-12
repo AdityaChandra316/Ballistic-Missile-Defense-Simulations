@@ -369,8 +369,7 @@ while True:
     prev_closest_distance = closest_distance
     
     if abm.engines_on:
-      desired_abm_thrust_vector = abm_desired_thrust_vector()
-      abm_thrust_vector = desired_abm_thrust_vector
+      abm_thrust_vector = abm_desired_thrust_vector()
 
     print(
       abm.time_since_launch, 
