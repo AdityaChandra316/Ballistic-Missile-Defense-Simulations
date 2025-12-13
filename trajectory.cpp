@@ -9,7 +9,7 @@
 float G = 6.6743015e-11f; 
 float M = 5.972168e24f;
 float R = 6371000.0f;
-float time_limit = powf(2.0f, -8.0f);
+float time_limit = 1.0f / 256.0f;
 
 void gravitational_field(float* point, float* field) {
   float r = sqrt(point[0] * point[0] + point[1] * point[1] + point[2] * point[2]);
